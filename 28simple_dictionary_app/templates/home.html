@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Search a Word</h1>
+
+<form method="POST" class="form-search">
+    <input type="text" name="word" placeholder="Enter word..." required autofocus />
+    <select name="language" onchange="changeLanguage(this.value)">
+        <option value="en" selected>English</option>
+        <option value="es">Spanish</option>
+    </select>
+    <button type="submit" class="btn">Search</button>
+</form>
+
+<script>
+    // Update the form action with selected language as query param on submit
+    document.querySelector('form').addEventListener('submit', function(event) {
+        const lang = document.querySelector('select').value;
+        this.action = '/?lang=' + lang;
+    });
+
+    function changeLanguage(lang) {
+        // No immediate action, form submit sets lang
+    }
+</script>
+{% endblock %}
