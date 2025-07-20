@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Search Result</h1>
+
+<div class="word-card">
+    <img src="{{ url_for('static', filename='icons/dictionary.png') }}" alt="Dictionary Icon" class="icon" />
+    <h2>{{ word|capitalize }} ({{ lang.upper() }})</h2>
+
+    {% if definition %}
+        <p class="definition">{{ definition }}</p>
+    {% else %}
+        <p class="not-found">Sorry, the word "{{ word }}" was not found in the {{ lang.upper() }} dictionary.</p>
+    {% endif %}
+</div>
+
+<a href="{{ url_for('home') }}" class="btn back-btn">Back to Search</a>
+{% endblock %}
